@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/size_100_dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="@dimen/size_2_dp"
+            android:layout_marginStart="10dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/gray_3535"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:importantForAccessibility="no" />
+
+        <ImageView
+            android:id="@+id/star_image"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_star_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/author_name"
+            app:layout_constraintTop_toBottomOf="@+id/author_name"
+            android:importantForAccessibility="no" />
+
+        <ImageView
+            android:id="@+id/fork_image"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/fork_image"
+            android:layout_marginStart="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_stars"
+            app:layout_constraintStart_toEndOf="@+id/txt_stars"
+            app:layout_constraintTop_toTopOf="@+id/txt_stars"
+            app:layout_constraintVertical_bias="1.0"
+            android:importantForAccessibility="no" />
+
+        <TextView
+            android:id="@+id/author_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:padding="@dimen/size_2_dp"
+            android:layout_margin="20dp"
+            app:layout_constraintStart_toEndOf="@+id/user_image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Uncle Bob" />
+
+        <TextView
+            android:id="@+id/repo_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/size_2_dp"
+            android:layout_marginStart="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/author_name"
+            app:layout_constraintStart_toEndOf="@+id/author_name"
+            app:layout_constraintTop_toTopOf="@+id/author_name"
+            tools:text="clean-architecture" />
+
+        <TextView
+            android:id="@+id/txt_stars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_4_dp"
+            android:padding="@dimen/size_2_dp"
+            app:layout_constraintBottom_toBottomOf="@+id/star_image"
+            app:layout_constraintStart_toEndOf="@+id/star_image"
+            app:layout_constraintTop_toTopOf="@+id/star_image"
+            tools:text="10,000" />
+
+        <TextView
+            android:id="@+id/txt_fork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_4_dp"
+            android:padding="@dimen/size_2_dp"
+            app:layout_constraintBottom_toBottomOf="@+id/fork_image"
+            app:layout_constraintStart_toEndOf="@+id/fork_image"
+            app:layout_constraintTop_toTopOf="@+id/fork_image"
+            tools:text="10,000" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_2_dp"
+            android:layout_marginHorizontal="@dimen/size_4_dp"
+            android:background="@color/gray_alpha_20"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
