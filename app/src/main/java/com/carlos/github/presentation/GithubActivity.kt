@@ -3,11 +3,13 @@ package com.carlos.github.presentation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.carlos.github.databinding.ActivityGithubBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class GithubActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGithubBinding
