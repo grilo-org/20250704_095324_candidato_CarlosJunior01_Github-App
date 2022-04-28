@@ -86,6 +86,7 @@ dependencies {
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     // Room
     implementation "androidx.room:room-ktx:$room_version"
