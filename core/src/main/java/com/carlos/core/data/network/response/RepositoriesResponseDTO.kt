@@ -2,7 +2,7 @@ package com.carlos.core.data.network.response
 
 import com.google.gson.annotations.SerializedName
 
-data class RepositoriesResponse(
+data class RepositoriesResponseDTO(
     @SerializedName("total_count") val totalCount: Int?,
     @SerializedName("items") val items: List<Items?>
 )

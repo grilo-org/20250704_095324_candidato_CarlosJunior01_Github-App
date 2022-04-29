@@ -6,6 +6,6 @@
     android:background="@color/gray_3232">
 
     <include layout="@layout/intro_screen" />
-    <include layout="@layout/repositories_screen" />
+    <include layout="@layout/repositories_screen" android:id="@+id/repositories_screen" />
 
 </ViewFlipper>
