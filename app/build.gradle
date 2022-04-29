@@ -39,16 +39,13 @@ android {
 }
 
 ext {
-    circle_version = '3.1.0'
-    coroutines_version = '1.5.2'
+    circle_version = "3.1.0"
+    coroutines_version = "1.5.2"
     glide_version = "4.12.0"
-    gson_version = "2.8.7"
-    lifecycle_version = '2.4.1'
-    lottie_version = '3.6.1'
+    lifecycle_version = "2.4.1"
+    lottie_version = "3.6.1"
     paging_version = "3.1.1"
-    retrofit_version = '2.9.0'
     room_version = "2.4.2"
-    okhttp_version = '4.9.3'
 }
 
 dependencies {
@@ -68,11 +65,8 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
     kapt "com.github.bumptech.glide:compiler:$glide_version"
 
-    // Gson
-    implementation "com.google.code.gson:gson:$gson_version"
-
     // Hilt
-    implementation 'com.google.dagger:hilt-android:2.39.1'
+    implementation 'com.google.dagger:hilt-android:2.40.5'
     kapt 'com.google.dagger:hilt-compiler:2.41'
 
     // Lifecycle
@@ -86,18 +80,10 @@ dependencies {
     // Paging3
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
-    // Retrofit
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-
     // Room
     implementation "androidx.room:room-ktx:$room_version"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
-
-    // Okhttp
-    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
 
     // Unit tests
     testImplementation 'junit:junit:4.13.2'
