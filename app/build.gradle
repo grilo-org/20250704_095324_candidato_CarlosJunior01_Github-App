@@ -40,12 +40,10 @@ android {
 
 ext {
     circle_version = "3.1.0"
-    coroutines_version = "1.5.2"
     glide_version = "4.12.0"
     hilt_version = "2.41"
     lifecycle_version = "2.4.1"
     lottie_version = "3.6.1"
-    paging_version = "3.1.1"
     room_version = "2.4.2"
 }
 
