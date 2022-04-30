@@ -1,10 +1,11 @@
 package com.carlos.github.framework.network.response
 
+import com.carlos.core.domain.model.GitRepositories
 import com.google.gson.annotations.SerializedName
 
-data class RepositoriesResponseDTO(
+data class GitHubReposResponseDTO(
     @SerializedName("total_count") val totalCount: Int?,
-    @SerializedName("items") val items: List<Items?>
+    @SerializedName("items") val items: List<Items>
 )
 
 data class Items(
@@ -17,7 +18,7 @@ data class Items(
     @SerializedName("updated_at") val updatedAt: String?,
     @SerializedName("stargazers_count") val stargazersCount: Int?,
     @SerializedName("watchers_count") val watchersCount: Int?,
-    @SerializedName("forks_count") val forksCount: String?,
+    @SerializedName("forks_count") val forksCount: Int?,
     @SerializedName("language") val language: String?
 )
 
@@ -27,3 +28,16 @@ data class Owner(
     @SerializedName("avatar_url") val avatarUrl: String?,
     @SerializedName("html_url") val htmlUrl: String?
 )
+
+fun Items.toGitRepositoriesModel(): GitRepositories {
+    return GitRepositories(
+        name = this.name,
+        stargazersCount = this.stargazersCount,
+        watchersCount = this.watchersCount,
+        forksCount = this.forksCount,
+        language = this.language,
+        login = this.owner?.login,
+        avatarUrl = this.owner?.avatarUrl,
+        htmlUrl = this.owner?.htmlUrl
+    )
+}

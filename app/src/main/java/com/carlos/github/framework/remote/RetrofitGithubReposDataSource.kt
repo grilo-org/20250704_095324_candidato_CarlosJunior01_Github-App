@@ -2,14 +2,14 @@ package com.carlos.github.framework.remote
 
 import com.carlos.core.data.repository.GitHubRemoteDataSource
 import com.carlos.github.framework.network.GitHubApi
-import com.carlos.github.framework.network.response.RepositoriesResponseDTO
+import com.carlos.github.framework.network.response.GitHubReposResponseDTO
 import javax.inject.Inject
 
 class RetrofitGithubReposDataSource @Inject constructor(
     private val gitHubApi: GitHubApi
-): GitHubRemoteDataSource<RepositoriesResponseDTO> {
+): GitHubRemoteDataSource<GitHubReposResponseDTO> {
 
-    override suspend fun fetchGithubRepositories(): RepositoriesResponseDTO {
+    override suspend fun fetchGithubRepositories(): GitHubReposResponseDTO {
         return gitHubApi.getRepositories()
     }
 }

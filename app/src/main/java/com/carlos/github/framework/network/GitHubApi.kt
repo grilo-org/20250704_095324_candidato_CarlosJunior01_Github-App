@@ -1,6 +1,6 @@
 package com.carlos.github.framework.network
 
-import com.carlos.github.framework.network.response.RepositoriesResponseDTO
+import com.carlos.github.framework.network.response.GitHubReposResponseDTO
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -11,5 +11,5 @@ interface GitHubApi {
         @Query("sort") sort: String = "stars",
         @Query("page") page: Int = 1,
         @Query("per_page") limitPage: Int = 20,
-    ) : RepositoriesResponseDTO
+    ) : GitHubReposResponseDTO
 }
