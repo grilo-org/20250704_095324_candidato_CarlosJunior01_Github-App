@@ -1,6 +1,7 @@
 package com.carlos.github.framework.di
 
 import com.carlos.github.BuildConfig
+import com.carlos.github.framework.network.GitHubApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -46,11 +47,12 @@ object NetworkModule {
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
         converterFactory: GsonConverterFactory
-    ): Retrofit =
+    ): GitHubApi =
         Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(converterFactory)
             .build()
+            .create(GitHubApi::class.java)
 }
