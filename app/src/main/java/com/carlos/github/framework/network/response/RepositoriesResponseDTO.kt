@@ -1,4 +1,4 @@
-package com.carlos.core.data.network.response
+package com.carlos.github.framework.network.response
 
 import com.google.gson.annotations.SerializedName
 

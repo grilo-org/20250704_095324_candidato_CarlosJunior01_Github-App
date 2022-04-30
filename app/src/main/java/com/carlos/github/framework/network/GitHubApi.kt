@@ -1,6 +1,6 @@
-package com.carlos.core.data.network
+package com.carlos.github.framework.network
 
-import com.carlos.core.data.network.response.RepositoriesResponseDTO
+import com.carlos.github.framework.network.response.RepositoriesResponseDTO
 import retrofit2.http.GET
 import retrofit2.http.Query
 
