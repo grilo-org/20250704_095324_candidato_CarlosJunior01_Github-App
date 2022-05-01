@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Github repo</string>
 
+    <!-- Github Activity -->
+    <string name="events_generic_error_title">Ops!</string>
+    <string name="events_generic_error_description">Aconteceu algum erro. \nPor favor tente novamente.</string>
+    <string name="events_btn_try_again">Tentar Novamente</string>
+
     <!-- Accessibility Description -->
     <string name="accessibility_github_background">Icone do Github</string>
 </resources>
