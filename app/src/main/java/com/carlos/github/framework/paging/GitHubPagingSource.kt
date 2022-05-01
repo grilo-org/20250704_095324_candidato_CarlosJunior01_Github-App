@@ -11,18 +11,15 @@ import java.lang.Exception
 class GitHubPagingSource(
     private val remoteDataSource: GitHubRemoteDataSource<GitHubReposResponseDTO>
 ) : PagingSource<Int, GitRepositories>() {
-
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, GitRepositories> {
         return try {
-            val page = params.key ?: 1
-            val response = remoteDataSource.fetchGithubRepositories()
-            val responseTotalCount = response.totalCount
+            val positionPage = params.key ?: INITIAL_PAGE_INDEX
+            val response = remoteDataSource.fetchGithubRepositories(positionPage = positionPage, limitPage = LIMIT)
 
             LoadResult.Page(
                 data = response.items.map { it.toGitRepositoriesModel() },
                 prevKey = null,
-                nextKey = page + 1
-                //nextKey = page + 1// if (responseTotalCount < )
+                nextKey = if (response.items.isEmpty()) null else positionPage + 1
             )
         } catch (exception: Exception) {
             LoadResult.Error(exception)
@@ -37,6 +34,7 @@ class GitHubPagingSource(
     }
 
     companion object {
+        private const val INITIAL_PAGE_INDEX: Int = 1
         private const val LIMIT = 20
     }
 }

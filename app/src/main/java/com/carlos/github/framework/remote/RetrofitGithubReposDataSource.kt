@@ -9,7 +9,7 @@ class RetrofitGithubReposDataSource @Inject constructor(
     private val gitHubApi: GitHubApi
 ): GitHubRemoteDataSource<GitHubReposResponseDTO> {
 
-    override suspend fun fetchGithubRepositories(): GitHubReposResponseDTO {
-        return gitHubApi.getRepositories()
+    override suspend fun fetchGithubRepositories(positionPage: Int, limitPage: Int): GitHubReposResponseDTO {
+        return gitHubApi.getRepositories(page = positionPage, limitPage = limitPage )
     }
 }

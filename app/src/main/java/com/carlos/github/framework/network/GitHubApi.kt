@@ -9,7 +9,7 @@ interface GitHubApi {
     suspend fun getRepositories(
         @Query("q") query: String = "language:kotlin",
         @Query("sort") sort: String = "stars",
-        @Query("page") page: Int = 1,
-        @Query("per_page") limitPage: Int = 20,
+        @Query("page") page: Int,
+        @Query("per_page") limitPage: Int,
     ) : GitHubReposResponseDTO
 }

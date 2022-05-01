@@ -1,11 +1,13 @@
 package com.carlos.github.framework.di
 
 import com.carlos.github.BuildConfig
+import com.carlos.github.GitApplication
 import com.carlos.github.framework.network.GitHubApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -17,6 +19,7 @@ import java.util.concurrent.TimeUnit
 object NetworkModule {
 
     private const val TIMEOUT_SECONDS = 15L
+    private const val CACHE_SIZE = 5 * 1024 * 1024L
 
     @Provides
     fun provideLoggingInterceptor() : HttpLoggingInterceptor =
@@ -36,6 +39,8 @@ object NetworkModule {
             .addInterceptor(loggingInterceptor)
             .readTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
             .connectTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+            .cache(cacheSize())
+            .addNetworkInterceptor(CacheInterceptor)
             .build()
 
     @Provides
@@ -55,4 +60,8 @@ object NetworkModule {
             .addConverterFactory(converterFactory)
             .build()
             .create(GitHubApi::class.java)
+
+    private fun cacheSize(): Cache {
+        return Cache( GitApplication.getContext()!!.cacheDir, CACHE_SIZE)
+    }
 }

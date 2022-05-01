@@ -12,7 +12,7 @@ class GitHubReposRepositoryImpl @Inject constructor(
     private val remoteDataSource: GitHubRemoteDataSource<GitHubReposResponseDTO>
 ): GithubReposRepository {
 
-    override fun getCharacters(query: String): PagingSource<Int, GitRepositories> {
+    override fun getRepositories(query: String): PagingSource<Int, GitRepositories> {
         return GitHubPagingSource(remoteDataSource)
     }
 }

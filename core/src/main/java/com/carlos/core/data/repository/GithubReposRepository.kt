@@ -5,5 +5,5 @@ import com.carlos.core.domain.model.GitRepositories
 
 interface GithubReposRepository {
 
-    fun getCharacters(query: String): PagingSource<Int, GitRepositories>
+    fun getRepositories(query: String): PagingSource<Int, GitRepositories>
 }
