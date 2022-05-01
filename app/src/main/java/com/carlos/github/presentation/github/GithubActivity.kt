@@ -41,10 +41,15 @@ class GithubActivity : AppCompatActivity() {
         }
     }
 
-    private fun initGitRepositoriesAdapter() {
-        binding.repositoriesScreen.recyclerViewRepositories.run {
-            setHasFixedSize(true)
-            adapter = githubAdapter
+    private fun observeStateLoad() {
+        lifecycleScope.launch {
+            githubAdapter.loadStateFlow.collectLatest { loadState ->
+                when (loadState.refresh) {
+                    is LoadState.Loading -> switchFlipperChild(SHOW_CHILD_ZERO)
+                    is LoadState.NotLoading -> switchFlipperChild(SHOW_CHILD_ONE)
+                    is LoadState.Error -> switchFlipperChild(SHOW_CHILD_TWO)
+                }
+            }
         }
     }
 
@@ -56,15 +61,10 @@ class GithubActivity : AppCompatActivity() {
         }
     }
 
-    private fun observeStateLoad() {
-        lifecycleScope.launch {
-            githubAdapter.loadStateFlow.collectLatest { loadState ->
-                when (loadState.refresh) {
-                    is LoadState.Loading -> switchFlipperChild(SHOW_CHILD_ZERO)
-                    is LoadState.NotLoading -> switchFlipperChild(SHOW_CHILD_ONE)
-                    is LoadState.Error -> switchFlipperChild(SHOW_CHILD_TWO)
-                }
-            }
+    private fun initGitRepositoriesAdapter() {
+        binding.repositoriesScreen.recyclerViewRepositories.run {
+            setHasFixedSize(true)
+            adapter = githubAdapter
         }
     }
 
