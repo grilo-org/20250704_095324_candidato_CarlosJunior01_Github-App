@@ -12,19 +12,16 @@ import javax.inject.Inject
 
 interface GetGitReposUseCase {
     operator fun invoke(params: GetGitReposParams): Flow<PagingData<GitRepositories>>
-
     data class GetGitReposParams(val query: String, val pagingConfig: PagingConfig)
 }
 
-class GetCharactersUseCaseImpl @Inject constructor(
+class GetGitReposUseCaseImpl @Inject constructor(
     private val githubReposRepository: GithubReposRepository
-) : PagingUseCase<GetGitReposParams, GitRepositories>(),
-    GetGitReposUseCase {
+) : PagingUseCase<GetGitReposParams, GitRepositories>(), GetGitReposUseCase {
 
     override fun createFlowObservable(params: GetGitReposParams): Flow<PagingData<GitRepositories>> {
-        val pagingSource = githubReposRepository.getRepositories(params.query)
         return Pager(config = params.pagingConfig) {
-            pagingSource
+            githubReposRepository.getRepositories(params.query)
         }.flow
     }
 }

@@ -6,7 +6,6 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.carlos.core.domain.model.GitRepositories
-import com.carlos.core.usecase.GetCharactersUseCaseImpl
 import com.carlos.core.usecase.GetGitReposUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -14,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GithubViewModel @Inject constructor(
-    private val getGitReposUseCase: GetCharactersUseCaseImpl
+    private val getGitReposUseCase: GetGitReposUseCase
 ): ViewModel() {
 
     fun gitRepositoriesPagingData(query: String): Flow<PagingData<GitRepositories>> {
