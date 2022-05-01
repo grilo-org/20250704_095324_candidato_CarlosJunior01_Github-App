@@ -64,7 +64,11 @@ class GithubActivity : AppCompatActivity() {
     private fun initGitRepositoriesAdapter() {
         binding.repositoriesScreen.recyclerViewRepositories.run {
             setHasFixedSize(true)
-            adapter = githubAdapter
+            adapter = githubAdapter.withLoadStateFooter(
+                footer = GitReposLoadStateAdapter(
+                    githubAdapter::retry
+                )
+            )
         }
     }
 
