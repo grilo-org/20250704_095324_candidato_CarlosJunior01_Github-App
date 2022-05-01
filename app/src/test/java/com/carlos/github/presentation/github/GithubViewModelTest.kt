@@ -1,20 +1,18 @@
 package com.carlos.github.presentation.github
 
 import androidx.paging.PagingData
-import com.carlos.core.domain.model.GitRepositories
 import com.carlos.core.usecase.GetGitReposUseCase
+import com.carlos.testing.MainCoroutineRule
+import com.carlos.testing.model.GitRepositoriesFactory
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.whenever
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.TestDispatcher
 import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
 import org.junit.Assert.assertNotNull
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -24,32 +22,26 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class GithubViewModelTest {
 
+    @get:Rule
     @ExperimentalCoroutinesApi
-    val testDispatcher: TestDispatcher = StandardTestDispatcher()
-
-    private val gitRepositoriesFake = PagingData.from(
-        listOf(
-            GitRepositories(
-                name = "Mvvm-Clean",
-                stargazersCount = 0,
-                watchersCount = 0,
-                forksCount = 0,
-                language = "Kotlin",
-                login = "Uncle Bob",
-                avatarUrl = "",
-                htmlUrl = ""
-            )
-        )
-    )
+    var mainCoroutineRule = MainCoroutineRule()
 
     @Mock
     lateinit var getGitReposUseCase: GetGitReposUseCase
+
     private lateinit var githubViewModel: GithubViewModel
+    private val githubRepositoriesFactory = GitRepositoriesFactory()
+
+    private val gitRepositoriesFake = PagingData.from(
+        listOf(
+            githubRepositoriesFactory.create(GitRepositoriesFactory.GithubRepositories.Mvvm),
+            githubRepositoriesFactory.create(GitRepositoriesFactory.GithubRepositories.CleanArch)
+        )
+    )
 
     @Before
     @ExperimentalCoroutinesApi
     fun setUp() {
-        Dispatchers.setMain(testDispatcher)
         githubViewModel = GithubViewModel(getGitReposUseCase)
     }
 
