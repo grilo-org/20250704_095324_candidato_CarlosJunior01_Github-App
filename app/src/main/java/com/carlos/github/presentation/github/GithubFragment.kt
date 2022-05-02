@@ -32,14 +32,14 @@ class GithubFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         clickListeners()
         observeStateLoad()
-        getGithubRepositories()
+        collectStateLoad()
         initGitRepositoriesAdapter()
     }
 
     private fun clickListeners() {
         binding.errorScreen.btnTryAgain.setOnClickListener {
-            getGithubRepositories()
-            observeStateLoad()
+            viewModel.gitRepositoriesPagingData("")
+            collectStateLoad()
         }
     }
 
@@ -55,10 +55,13 @@ class GithubFragment : Fragment() {
         }
     }
 
-    private fun getGithubRepositories() {
+    private fun collectStateLoad() {
         lifecycleScope.launchWhenCreated {
-            viewModel.gitRepositoriesPagingData("").collect { pagingData ->
-                githubAdapter.submitData(pagingData)
+            viewModel.screenState.collect { state ->
+                when (state) {
+                    is StateResponse.StateSuccess -> githubAdapter.submitData(state.it)
+                    else -> {}
+                }
             }
         }
     }

@@ -7,7 +7,6 @@ import com.carlos.testing.model.GitRepositoriesFactory
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertNotNull
@@ -55,15 +54,6 @@ class GithubViewModelTest {
             )
             val result = githubViewModel.gitRepositoriesPagingData("")
 
-            assertNotNull(result.first())
-        }
-
-    @Test(expected = RuntimeException::class)
-    fun `should throw an exception when the calling to the use case returns an exception`() =
-        runTest {
-            whenever(getGitReposUseCase.invoke(any()))
-                .thenThrow(RuntimeException())
-
-            githubViewModel.gitRepositoriesPagingData("")
+            assertNotNull(result)
         }
 }
