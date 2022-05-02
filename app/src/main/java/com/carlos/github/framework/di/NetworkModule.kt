@@ -1,11 +1,12 @@
 package com.carlos.github.framework.di
 
+import android.content.Context
 import com.carlos.github.BuildConfig
-import com.carlos.github.GitApplication
 import com.carlos.github.framework.network.GitHubApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -33,13 +34,14 @@ object NetworkModule {
 
     @Provides
     fun provideOkHttpClient(
-        loggingInterceptor: HttpLoggingInterceptor
+        loggingInterceptor: HttpLoggingInterceptor,
+        @ApplicationContext context: Context
     ): OkHttpClient =
         OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .readTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
             .connectTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
-            .cache(cacheSize())
+            .cache(cacheSize(context))
             .addNetworkInterceptor(CacheInterceptor)
             .build()
 
@@ -61,7 +63,7 @@ object NetworkModule {
             .build()
             .create(GitHubApi::class.java)
 
-    private fun cacheSize(): Cache {
-        return Cache( GitApplication.getContext()!!.cacheDir, CACHE_SIZE)
+    private fun cacheSize(context: Context): Cache {
+        return Cache(context.cacheDir, CACHE_SIZE)
     }
 }

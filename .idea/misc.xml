@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Carlos Junior/StudioProjects/Github-App/app/src/main/res/layout/fragment_github.xml" value="0.2015625" />
+        <entry key="..\:/Users/Carlos Junior/StudioProjects/Github-App/app/src/main/res/layout/intro_screen.xml" value="0.2015625" />
+        <entry key="..\:/Users/Carlos Junior/StudioProjects/Github-App/app/src/main/res/layout/repositories_screen.xml" value="0.2015625" />
         <entry key="..\:/Users/Carlos Junior/StudioProjects/Github/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.306" />
         <entry key="..\:/Users/Carlos Junior/StudioProjects/Github/app/src/main/res/drawable/circle.xml" value="0.25" />
         <entry key="..\:/Users/Carlos Junior/StudioProjects/Github/app/src/main/res/layout/activity_github.xml" value="0.38697916666666665" />

@@ -8,14 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
-import com.carlos.github.R
 import com.carlos.github.databinding.FragmentGithubBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class GithubFragment : Fragment(R.layout.fragment_github) {
+class GithubFragment : Fragment() {
 
     private lateinit var binding: FragmentGithubBinding
     private val githubAdapter = GithubRepositoriesAdapter()

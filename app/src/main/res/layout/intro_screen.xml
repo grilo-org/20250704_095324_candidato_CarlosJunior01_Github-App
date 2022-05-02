@@ -19,6 +19,7 @@
         android:importantForAccessibility="no"/>
 
     <ImageView
+        android:id="@+id/imgGithub"
         android:layout_width="@dimen/size_250_dp"
         android:layout_height="@dimen/size_250_dp"
         android:scaleType="centerCrop"
