@@ -26,7 +26,7 @@ Aplicativo Android Nativo escrito em Kotlin, consumindo Api do Github para lista
 ![screen_02](https://user-images.githubusercontent.com/9430430/166216552-459e7513-fa05-496f-96bd-5f5298252839.gif)
 
 **MVVM:** Tem como principal objetivo separar responsabilidades entre Views e Modelos
-Aqui temos a View que responde somente para a ViewModel, e a ViewModel não comunica diretamente com a View. A ViewModel é então uma classe intermediaria entre a View e a Model que conecta uma com a outra fazendo assim intermediação entre elas através do mecanismo de conexão Data Binding.
+Aqui temos a View que responde somente para a ViewModel, e a ViewModel não comunica diretamente com a View. A ViewModel é então uma classe intermediaria entre a View e a Model que conecta uma com a outra fazendo assim intermediação entre ambas.
 
 **Modelo (Model):**
 A Model caracteriza um conjunto de classes para descrever a lógica de negócios. Ela também descreve as regras de negócios para dados sobre como os dados podem ser manipulados ou alterados.
