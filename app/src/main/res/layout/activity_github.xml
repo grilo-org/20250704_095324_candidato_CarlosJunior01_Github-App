@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/view_flipper_activity"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/gray_3232">
-
-    <include layout="@layout/intro_screen" />
-    <include layout="@layout/repositories_screen" android:id="@+id/repositories_screen" />
-    <include layout="@layout/error_screen" android:id="@+id/error_screen" />
-
-</ViewFlipper>
+    android:layout_height="match_parent">
+</FrameLayout>
