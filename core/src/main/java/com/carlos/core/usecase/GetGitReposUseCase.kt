@@ -20,8 +20,7 @@ class GetGitReposUseCaseImpl @Inject constructor(
 ) : PagingUseCase<GetGitReposParams, GitRepositories>(), GetGitReposUseCase {
 
     override fun createFlowObservable(params: GetGitReposParams): Flow<PagingData<GitRepositories>> {
-        return Pager(config = params.pagingConfig) {
-            githubReposRepository.getRepositories(params.query)
-        }.flow
+        val pagingSource = githubReposRepository.getRepositories(params.query)
+        return Pager(config = params.pagingConfig) {pagingSource}.flow
     }
 }

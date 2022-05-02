@@ -23,7 +23,6 @@ import org.mockito.junit.MockitoJUnitRunner
 class GithubViewModelTest {
 
     @get:Rule
-    @ExperimentalCoroutinesApi
     var mainCoroutineRule = MainCoroutineRule()
 
     @Mock
@@ -40,13 +39,11 @@ class GithubViewModelTest {
     )
 
     @Before
-    @ExperimentalCoroutinesApi
     fun setUp() {
         githubViewModel = GithubViewModel(getGitReposUseCase)
     }
 
     @Test
-    @ExperimentalCoroutinesApi
     fun `should validate the paging data object values when calling gitRepositoriesPagingData`() =
         runTest {
             whenever(
