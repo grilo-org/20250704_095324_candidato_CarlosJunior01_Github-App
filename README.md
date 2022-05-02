@@ -20,7 +20,7 @@ Aplicativo de listagem de repositórios Github.
 
 *******
 
-Aplicativo Android Nativo escrito em Kotlin, consumindo Api do Github para listagem de repositórios, processando resposta com retrofit e tratamento de concorrência com Kotlin Flow, utilizando padrão de arquitetura MVVM + Clean Architecture em multi-módulos, com divisão de responsabilidades e separação de conceitos e desacoplamento de camadas. Injeção de dependência com Dagger Hilt. Testes unitários e Testes de interface utilizando JUnit, Mockito e Espresso.
+Aplicativo Android Nativo escrito em Kotlin, consumindo Api do Github para listagem de repositórios, processando resposta com retrofit e tratamento de concorrência com Kotlin Flow, utilizando padrão de arquitetura MVVM + Clean Architecture em multi-módulos, com divisão de responsabilidades e separação de conceitos e desacoplamento de camadas. Injeção de dependência com Dagger Hilt. Cache de imagens e da Api. Testes unitários e Testes de interface utilizando JUnit, Mockito e Espresso.
 
 ![screen_01](https://user-images.githubusercontent.com/9430430/166215687-74ad085c-59b6-45e9-ba76-8401eecabfbf.gif)
 ![screen_02](https://user-images.githubusercontent.com/9430430/166216552-459e7513-fa05-496f-96bd-5f5298252839.gif)
